@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+  <metahttp-equiv="pragma"content="no-cache">
+  <metahttp-equiv="cache-control"content="no-cache">
+  <metahttp-equiv="expires"content="0">
+  <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+  <!--<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/exporting.js"></script>-->
+  <script>
+    $(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Monthly Average Temperature'
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com'
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov']
+        },
+        yAxis: {
+            title: {
+                text: 'Temperature (°C)'
+            }
+        },
+        tooltip: {
+            enabled: false,
+            formatter: function() {
+                return '<b>'+ this.series.name +'</b>'+this.x +': '+ this.y +'°C';
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: 'Tokyo',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        }, {
+            name: 'London',
+            data: [1.9, 2.2, 3.7, 4.5, 5.9, 7.2, 8.0, 8.6, 9.2, 12.3, 22]
+        }]
+    });
+});
+  </script>
+</head>
+<body>
+  <div id="container" style="min-width:700px;height:400px"></div>
+</body>
+</html>
